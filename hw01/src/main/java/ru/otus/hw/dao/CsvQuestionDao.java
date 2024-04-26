@@ -19,26 +19,24 @@ public class CsvQuestionDao implements QuestionDao {
 
     @Override
     public List<Question> findAll() {
-        List<QuestionDto> questionDtoList;
+        ClassLoader classLoader = getClass().getClassLoader();
 
-        try {
-            ClassLoader classLoader = getClass().getClassLoader();
-            InputStream inputStream = classLoader.getResourceAsStream(fileNameProvider.getTestFileName());
+        try (InputStream inputStream = classLoader.getResourceAsStream(fileNameProvider.getTestFileName())) {
             Reader reader = new InputStreamReader(inputStream);
 
-            questionDtoList = new CsvToBeanBuilder<QuestionDto>(reader)
+            List<QuestionDto> questionDtoList = new CsvToBeanBuilder<QuestionDto>(reader)
                     .withType(QuestionDto.class)
                     .withSkipLines(1)
                     .withSeparator(';')
                     .build()
                     .parse();
+
+            return questionDtoList.stream()
+                    .map(QuestionDto::toDomainObject)
+                    .collect(Collectors.toList());
         } catch (Exception throwable) {
             String errorMessage = String.format("Error while reading file \"%s\"", fileNameProvider.getTestFileName());
             throw new QuestionReadException(errorMessage, throwable);
         }
-
-        return questionDtoList.stream()
-                .map(QuestionDto::toDomainObject)
-                .collect(Collectors.toList());
     }
 }

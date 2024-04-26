@@ -20,22 +20,25 @@ public class TestServiceImpl implements TestService {
         ioService.printFormattedLine("Please answer the questions below%n");
         // Получить вопросы из дао и вывести их с вариантами ответов
         List<Question> questions = questionDao.findAll();
+        questions.forEach(this::printQuestionWithAnswers);
+    }
 
-        for (Question question : questions) {
-            ioService.printLine(question.text());
+    private void printQuestionWithAnswers(Question question) {
+        ioService.printLine(question.text());
+        this.printAnswers(question.answers());
+        ioService.printLine("");
+    }
 
-            int answerNumber = 1;
-            for (Answer answer : question.answers()) {
-                ioService.printLine(String.format(
-                        "%s. %s %s",
-                        answerNumber,
-                        answer.text(),
-                        answer.isCorrect() ? "[CORRECT]" : null));
+    private void printAnswers(List<Answer> answers) {
+        int answerNumber = 1;
+        for (Answer answer : answers) {
+            ioService.printFormattedLine(
+                    "%s. %s %s",
+                    answerNumber,
+                    answer.text(),
+                    answer.isCorrect() ? "[CORRECT]" : null);
 
-                answerNumber++;
-            }
-
-            ioService.printLine("");
+            answerNumber++;
         }
     }
 }
