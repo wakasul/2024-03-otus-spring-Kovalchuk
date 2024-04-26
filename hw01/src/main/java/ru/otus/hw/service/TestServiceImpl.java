@@ -36,7 +36,7 @@ public class TestServiceImpl implements TestService {
                     "%s. %s %s",
                     answerNumber,
                     answer.text(),
-                    answer.isCorrect() ? "[CORRECT]" : null);
+                    answer.isCorrect() ? "[CORRECT]" : "");
 
             answerNumber++;
         }
