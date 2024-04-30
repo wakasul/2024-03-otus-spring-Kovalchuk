@@ -1,0 +1,4 @@
+# Добавить сюда своих вопросов. Эту строку надо пропустить при настройке CsvToBean (withSkipLines)
+Q1;A1%false|A2%true|A3%false
+Q2;A4%false|A5%false|A6%true
+Q3;A7%true|A8%false|A9%false
