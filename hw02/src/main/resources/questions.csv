@@ -1,0 +1,6 @@
+# Добавить сюда своих вопросов. Эту строку надо пропустить при настройке CsvToBean (withSkipLines)
+What is 2 + 2?;22%false|5%false|4%true
+What is the capital of great britain?;Moscow%false|London%true|Los Angeles%false
+What is the recommended way to inject Spring Beans?;Constructor%true|Setter%false|Field%false
+How to tell Spring to use one of several constructors for bean creation?;@Primary%false|@Qualifier%false|@Bean%false|@Autowired%true
+What is the most generic annotation for Spring component declaration?;@Configuration%false|@Component%true|@Service%false
