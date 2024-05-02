@@ -51,14 +51,11 @@ public class TestServiceImpl implements TestService {
     }
 
     private void printAnswers(List<Answer> answers) {
-        int answerNumber = 1;
-        for (Answer answer : answers) {
+        for (int answerIndex = 0; answerIndex < answers.size(); answerIndex++) {
             ioService.printFormattedLine(
                     "%s. %s",
-                    answerNumber,
-                    answer.text());
-
-            answerNumber++;
+                    answerIndex + 1,
+                    answers.get(answerIndex).text());
         }
     }
 }
