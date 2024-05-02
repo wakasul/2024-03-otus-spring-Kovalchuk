@@ -23,7 +23,7 @@ public class CsvQuestionDaoTest {
 
     @DisplayName("Проверить результаты вызова метода findAll")
     @Test
-    public void CsvQuestionDaoTest_check_findAll_result() {
+    public void csvQuestionDaoTestCheckFindAllResult() {
         when(testFileNameProvider.getTestFileName()).thenReturn("questions.csv");
         var questionDao = new CsvQuestionDao(testFileNameProvider);
         var questions = questionDao.findAll();

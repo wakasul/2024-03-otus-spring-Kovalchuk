@@ -27,7 +27,7 @@ public class TestRunnerServiceImplTest {
 
     @DisplayName("Проверить факт вызова executeTestFor с тестовым студентом при запуске тестирования")
     @Test
-    public void TestRunnerServiceImpl_calls_executeTestFor_on_run() {
+    public void testRunnerServiceImplCallsExecuteTestForOnRun() {
         var testStudent = new Student("Ivan", "Ivanov");
         when(studentService.determineCurrentStudent()).thenReturn(testStudent);
 
